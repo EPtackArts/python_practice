@@ -1,0 +1,62 @@
+#find max of 3 numbers
+def max_num(a, b, c):
+    print(max(a, b, c))
+
+#multiply all numbers in a list
+def mult_list(list):
+    if len(list) == 0:
+        return 0
+    answer = list[0]
+    if len(list)>1:
+        for i in list[1:]:
+            answer = answer * i
+    print(answer)
+
+#reverse a string
+def rev_string(string):
+    str_list = [i for i in string]
+    str_list.reverse()
+    str = " "
+    print (str.join(str_list))
+
+#check if a number falls within a given range
+#accepts beginning and end of range as arguments
+#will return True or False
+def num_within(x, beginning, end):
+    return x in range(beginning, end+1) 
+
+#prints first n rows of Pascal's triangle
+#accepts number of rows as arguement
+triangle = [[1], [1, 1]]
+def pascal(n):
+    if n < 1:
+        print("invalid")
+    elif n == 1:
+        print(triangle[0])
+    else:
+        row_number = 2
+        while len(triangle) < n:
+            row = []
+            row_prev = triangle[row_number - 1]
+            length = len(row_prev)+1
+            for i in range(length):
+                if i == 0:
+                    row.append(1)
+                elif i > 0 and i < length-1:
+                    row.append(triangle[row_number-1][i-1]+triangle[row_number-1][i])
+                else:
+                    row.append(1)
+            triangle.append(row)
+            row_number += 1
+            for row in triangle:
+                print(row)
+
+
+max_num(1,2,3)
+mult_list([1, 2, 3])
+rev_string("hello")
+print(num_within(7, 3, 5))
+pascal(0)
+pascal(1)
+pascal(2)
+pascal(5)
